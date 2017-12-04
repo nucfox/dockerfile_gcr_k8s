@@ -37,7 +37,7 @@ RUN { \
 
 # do some fancy footwork to create a JAVA_HOME that's cross-architecture-safe
 RUN ln -svT "/usr/lib/jvm/java-7-openjdk-$(dpkg --print-architecture)" /docker-java-home
-ENV JAVA_HOME /docker-java-home
+ENV JAVA_HOME /docker-java-home/jre
 
 ENV JAVA_VERSION 7u151
 ENV JAVA_DEBIAN_VERSION 7u151-2.6.11-2~deb8u1
