@@ -103,7 +103,6 @@ RUN set -eux; \
 		libapr1-dev \
 		libssl-dev \
 		make \
-		openjdk-${JAVA_VERSION%%[-~bu]*}-jdk=$JAVA_DEBIAN_VERSION \
 	"; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends $nativeBuildDeps; \
@@ -131,14 +130,14 @@ RUN set -eux; \
 	find ./bin/ -name '*.sh' -exec sed -ri 's|^#!/bin/sh$|#!/usr/bin/env bash|' '{}' +
 
 # verify Tomcat Native is working properly
-#RUN set -e \
-#	&& nativeLines="$(catalina.sh configtest 2>&1)" \
-#	&& nativeLines="$(echo "$nativeLines" | grep 'Apache Tomcat Native')" \
-#	&& nativeLines="$(echo "$nativeLines" | sort -u)" \
-#	&& if ! echo "$nativeLines" | grep 'INFO: Loaded APR based Apache Tomcat Native library' >&2; then \
-#		echo >&2 "$nativeLines"; \
-#		exit 1; \
-#	fi
+RUN set -e \
+	&& nativeLines="$(catalina.sh configtest 2>&1)" \
+	&& nativeLines="$(echo "$nativeLines" | grep 'Apache Tomcat Native')" \
+	&& nativeLines="$(echo "$nativeLines" | sort -u)" \
+	&& if ! echo "$nativeLines" | grep 'INFO: Loaded APR based Apache Tomcat Native library' >&2; then \
+		echo >&2 "$nativeLines"; \
+		exit 1; \
+	fi
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
