@@ -132,6 +132,9 @@ RUN set -eux; \
 # Modify the Catalina.sh, add the K8S_ENV_JAVA_OPTS environment variable
 RUN sed -i '/#JAVA_OPTS=/ a JAVA_OPTS="$JAVA_OPTS $K8S_ENV_JAVA_OPTS"' $CATALINA_HOME/bin/catalina.sh
 
+# Delete the file in the WEBAPPS directory
+RUN rm -rf $CATALINA_HOME/webapps/*
+
 # verify Tomcat Native is working properly
 RUN set -e \
 	&& nativeLines="$(catalina.sh configtest 2>&1)" \
