@@ -130,7 +130,7 @@ RUN set -eux; \
 	find ./bin/ -name '*.sh' -exec sed -ri 's|^#!/bin/sh$|#!/usr/bin/env bash|' '{}' +
 
 # Modify the Catalina.sh, add the K8S_ENV_JAVA_OPTS environment variable
-RUN sed -i '/#JAVA_OPTS=/ a JAVA_OPTS=${K8S_ENV_JAVA_OPTS}' $CATALINA_HOME/bin/catalina.sh
+RUN sed -i '/#JAVA_OPTS=/ a JAVA_OPTS="$JAVA_OPTS $K8S_ENV_JAVA_OPTS"' $CATALINA_HOME/bin/catalina.sh
 
 # verify Tomcat Native is working properly
 RUN set -e \
