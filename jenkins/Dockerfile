@@ -20,10 +20,10 @@ RUN chmod +x /usr/local/bin/docker-compose
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 # 安装 mono
-apt-get install apt-transport-https dirmngr
-echo "deb https://download.mono-project.com/repo/debian stable-stretch main" > /etc/apt/sources.list.d/mono-official-stable.list
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-apt-get update
-apt-get install mono-devel mono-complete mono-dbg referenceassemblies-pcl ca-certificates-mono mono-xsp4
+RUN apt-get install apt-transport-https dirmngr
+RUN echo "deb https://download.mono-project.com/repo/debian stable-stretch main" > /etc/apt/sources.list.d/mono-official-stable.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+RUN apt-get update
+RUN apt-get install mono-devel mono-complete mono-dbg referenceassemblies-pcl ca-certificates-mono mono-xsp4
 
 USER jenkins
