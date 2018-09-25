@@ -28,8 +28,8 @@ RUN apt-get install -y mono-devel mono-complete mono-dbg referenceassemblies-pcl
 # 安装文件名编码转换工具
 RUN apt-get install -y convmv
 
----------------------
+# ---------------------
 
-本文来自 zw_csdn 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/jnbbwyth/article/details/6991425?utm_source=copy 
+# 本文来自 zw_csdn 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/jnbbwyth/article/details/6991425?utm_source=copy 
 
 USER jenkins
