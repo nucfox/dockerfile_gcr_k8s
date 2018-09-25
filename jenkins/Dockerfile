@@ -7,7 +7,7 @@ RUN echo '' > /etc/apt/sources.list.d/jessie-backports.list \
   && echo "deb http://mirrors.aliyun.com/debian jessie-updates main contrib non-free" >> /etc/apt/sources.list \
   && echo "deb http://mirrors.aliyun.com/debian-security jessie/updates main contrib non-free" >> /etc/apt/sources.list
 #更新源并安装缺少的包
-RUN apt-get update && apt-get install -y libltdl7 && apt-get update
+RUN apt-get update && apt-get install -y libltdl7
 
 ARG dockerGid=993
 
@@ -25,5 +25,11 @@ RUN echo "deb https://download.mono-project.com/repo/debian stable-stretch main"
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 RUN apt-get update
 RUN apt-get install -y mono-devel mono-complete mono-dbg referenceassemblies-pcl ca-certificates-mono mono-xsp4
+# 安装文件名编码转换工具
+RUN apt-get install -y convmv
+
+---------------------
+
+本文来自 zw_csdn 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/jnbbwyth/article/details/6991425?utm_source=copy 
 
 USER jenkins
