@@ -1,11 +1,17 @@
 FROM jenkins/jenkins
 
 USER root
-#清除了基础镜像设置的源，切换成阿里云的jessie源
-#RUN echo '' > /etc/apt/sources.list.d/jessie-backports.list \
-#  && echo "deb http://mirrors.aliyun.com/debian jessie main contrib non-free" > /etc/apt/sources.list \
-#  && echo "deb http://mirrors.aliyun.com/debian jessie-updates main contrib non-free" >> /etc/apt/sources.list \
-#  && echo "deb http://mirrors.aliyun.com/debian-security jessie/updates main contrib non-free" >> /etc/apt/sources.list
+#切换成阿里云的debian 9.x (stretch)源
+#RUN cat > /etc/apt/sources.list << EOF
+#deb http://mirrors.aliyun.com/debian/ stretch main non-free contrib
+#deb-src http://mirrors.aliyun.com/debian/ stretch main non-free contrib
+#deb http://mirrors.aliyun.com/debian-security stretch/updates main
+#deb-src http://mirrors.aliyun.com/debian-security stretch/updates main
+#deb http://mirrors.aliyun.com/debian/ stretch-updates main non-free contrib
+#deb-src http://mirrors.aliyun.com/debian/ stretch-updates main non-free contrib
+#deb http://mirrors.aliyun.com/debian/ stretch-backports main non-free contrib
+#deb-src http://mirrors.aliyun.com/debian/ stretch-backports main non-free contrib
+#EOF
 #更新源并安装缺少的包
 RUN apt-get update && apt-get install -y libltdl7
 
@@ -27,9 +33,5 @@ RUN apt-get update
 RUN apt-get install -y mono-devel mono-complete mono-dbg referenceassemblies-pcl ca-certificates-mono mono-xsp4
 # 安装文件名编码转换工具
 RUN apt-get install -y convmv
-
-# ---------------------
-
-# 本文来自 zw_csdn 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/jnbbwyth/article/details/6991425?utm_source=copy 
 
 USER jenkins
