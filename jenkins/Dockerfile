@@ -19,7 +19,7 @@ ARG dockerGid=993
 
 RUN echo "dockerroot:x:${dockerGid}:jenkins" >> /etc/group 
 
-# 安装 docker-compose 因为等下构建环境的需要
+# 安装 docker-compose 构建环境需要
 RUN curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
 
