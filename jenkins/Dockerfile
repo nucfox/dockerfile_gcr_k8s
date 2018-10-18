@@ -1,4 +1,4 @@
-FROM jenkins/jenkins
+FROM jenkins/jenkins:lts
 
 USER root
 #切换成阿里云的debian 9.x (stretch)源
@@ -18,6 +18,13 @@ RUN apt-get update && apt-get install -y libltdl7
 ARG dockerGid=993
 
 RUN echo "dockerroot:x:${dockerGid}:jenkins" >> /etc/group 
+
+# 安装ansble
+RUN echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main" >> /etc/apt/sources.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
+RUN apt-get update
+RUN apt-get install ansible
+RUN echo "host_key_checking = False" >> /etc/ansible/ansible.cfg
 
 # 安装 docker-compose 构建环境需要
 RUN curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
