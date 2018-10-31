@@ -42,7 +42,7 @@ RUN apt-get install -y mono-devel mono-complete mono-dbg referenceassemblies-pcl
 RUN apt-get install -y convmv
 # 安装NuGet
 RUN curl -o /usr/bin/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-RUN echo -e "#!/bin/sh\nMONO_GC_PARAMS=\"nursery-size=64m,\$MONO_GC_PARAMS\" exec /usr/bin/mono \$MONO_OPTIONS /usr/bin/nuget.exe \"\$@\"" > /usr/bin/nuget 
+RUN echo "#!/bin/sh\nMONO_GC_PARAMS=\"nursery-size=64m,\$MONO_GC_PARAMS\" exec /usr/bin/mono \$MONO_OPTIONS /usr/bin/nuget.exe \"\$@\"" > /usr/bin/nuget 
 RUN chmod +x /usr/bin/nuget
 
 # Install .NET CLI dependencies
