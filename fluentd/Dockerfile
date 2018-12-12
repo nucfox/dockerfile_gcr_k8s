@@ -10,6 +10,7 @@ RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev" \
  && sudo gem install \
         fluent-plugin-elasticsearch \
         fluent-plugin-kafka \
+        zookeeper \
  && sudo gem sources --clear-all \
  && SUDO_FORCE_REMOVE=yes \
     apt-get purge -y --auto-remove \
