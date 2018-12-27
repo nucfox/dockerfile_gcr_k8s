@@ -4,7 +4,7 @@ FROM fluent/fluentd:v1.3-debian-onbuild
 # below RUN includes plugin as examples elasticsearch is not required
 # you may customize including plugins as you wish
 
-RUN buildDeps="sudo apt-utils make gcc g++ libc-dev ruby-dev" \
+RUN buildDeps="sudo patch make gcc g++ libc-dev ruby-dev" \
  && apt-get update \
  && apt-get install -y --no-install-recommends $buildDeps \
  && sudo gem install \
