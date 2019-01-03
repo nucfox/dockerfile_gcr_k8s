@@ -24,6 +24,7 @@ RUN apt-get install -y gcc g++ make
 # 安装npm
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
+RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 # 安装ansble
 RUN echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main" >> /etc/apt/sources.list
