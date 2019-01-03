@@ -19,11 +19,11 @@ ARG dockerGid=993
 
 RUN echo "dockerroot:x:${dockerGid}:jenkins" >> /etc/group 
 
+# 安装development tools
+RUN apt-get install -y gcc g++ make
 # 安装npm
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
-# 安装development tools
-RUN apt-get install -y gcc g++ make
 
 # 安装ansble
 RUN echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main" >> /etc/apt/sources.list
@@ -66,10 +66,6 @@ RUN apt-get update \
         libuuid1 \
         zlib1g \
     && rm -rf /var/lib/apt/lists/*
-
-# 安装nodejs
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN apt-get install -y nodejs
 
 # Install .NET Core SDK
 ENV DOTNET_SDK_VERSION 2.1.202
