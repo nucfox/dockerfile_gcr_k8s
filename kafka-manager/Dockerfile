@@ -7,7 +7,7 @@ ENV ZK_HOSTS=localhost:2181 \
 
 ADD start-kafka-manager.sh /kafka-manager-${KM_VERSION}/start-kafka-manager.sh
 
-RUN buildDeps="wget git unzip which" \
+RUN buildDeps="wget git unzip" \
     && apt-get update && apt-get install -y --no-install-recommends $buildDeps \
     && cd /tmp \
     && git clone https://github.com/yahoo/kafka-manager.git \
