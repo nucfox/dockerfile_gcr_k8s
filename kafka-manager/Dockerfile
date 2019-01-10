@@ -11,9 +11,11 @@ RUN buildDeps="git unzip" \
     && apt-get update && apt-get install -y --no-install-recommends $buildDeps \
     && cd /tmp \
     && git clone https://github.com/yahoo/kafka-manager.git \
+    && cd kafka-manager \
     && echo 'scalacOptions ++= Seq("-Xmax-classfile-name", "200")' >> build.sbt \
     && ./sbt clean dist \
     && unzip  -d / ./target/universal/kafka-manager-${KM_VERSION}.zip \
+    && cd ../ \
     && rm -fr /tmp/* /root/.sbt /root/.ivy2 \
     && chmod +x /kafka-manager-${KM_VERSION}/start-kafka-manager.sh \
     && apt-get purge -y --auto-remove \
