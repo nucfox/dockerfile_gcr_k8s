@@ -23,4 +23,4 @@ RUN rm -rf /tmp/jexus-5.8.* >/dev/null 2>&1
 
 EXPOSE 80
 WORKDIR /usr/jexus
-ENTRYPOINT ["bash","/usr/jexus/jws","start"]
+ENTRYPOINT ["/usr/jexus/jwss"]
