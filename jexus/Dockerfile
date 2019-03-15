@@ -14,4 +14,4 @@ RUN curl https://jexus.org/release/x64/install.sh|sh
 
 EXPOSE 80
 WORKDIR /usr/jexus
-ENTRYPOINT ["/usr/jexus/jws"]
+ENTRYPOINT ["bash","/usr/jexus/jws","start"]
