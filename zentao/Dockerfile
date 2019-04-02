@@ -1,4 +1,4 @@
-FROM buildpack-deps:18.04-curl 
+FROM buildpack-deps:18.04 
 MAINTAINER Swire Chen <idoop@msn.cn>
 
 ENV ZENTAO_VER=9.6
