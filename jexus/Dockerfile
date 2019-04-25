@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 ENV LANG C.UTF-8
 
-ADD winfonts /usr/share/fonts/
+ADD winfonts /usr/share/fonts/winfonts
 RUN cd /usr/share/fonts/winfonts
 RUN mkfontscale && mkfontdir && fc-cache
 RUN cd /tmp
