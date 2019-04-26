@@ -14,5 +14,7 @@ RUN ln -s /lib/x86_64-linux-gnu/libdl.so.2  /lib/x86_64-linux-gnu/libdl.so
 RUN ln -s /usr/lib/libgdiplus.so /usr/lib/gdiplus.dll
 
 ADD winfonts /usr/share/fonts/winfonts
-RUN cd /usr/share/fonts/winfonts
-RUN mkfontscale && mkfontdir && fc-cache
+RUN cd /usr/share/fonts/winfonts \
+       && /usr/bin/mkfontscale \
+       && /usr/bin/mkfontdir \
+       && /usr/bin/fc-cache
