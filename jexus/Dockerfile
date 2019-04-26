@@ -14,8 +14,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV LANG C.UTF-8
 
 ADD winfonts /usr/share/fonts/winfonts
-RUN cd /usr/share/fonts/winfonts
-RUN mkfontscale && mkfontdir && fc-cache
+RUN cd /usr/share/fonts/winfonts \
+       && /usr/bin/mkfontscale \
+       && /usr/bin/mkfontdir \
+       && /usr/bin/fc-cache
 RUN cd /tmp
 RUN wget --no-check-certificate https://linuxdot.net/down/jexus-5.8.3-x64.tar.gz
 RUN tar -zxvf jexus-5.8.3-x64.tar.gz
