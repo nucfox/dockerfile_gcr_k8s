@@ -22,4 +22,6 @@ RUN buildDeps="sudo make gcc g++ libc-dev" \
 COPY fluent.conf /fluentd/etc/
 COPY entrypoint.sh /bin/
 
+RUN chown fluent.fluent /bin/entrypoint.sh
+
 USER fluent
