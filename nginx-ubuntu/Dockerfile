@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com> Modified By jiang9217@foxmail.com"
 
-ENV http_proxy=http://proxy.it.taikang.com:8080
+# ENV http_proxy=http://proxy.it.taikang.com:8080
 
 RUN apt-get update
 RUN apt-get install -y gcc \
