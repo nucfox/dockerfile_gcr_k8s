@@ -6,17 +6,14 @@ ENV http_proxy=http://proxy.it.taikang.com:8080
 
 RUN apt-get update
 RUN apt-get install -y gcc \
-			libc-dev \
+			libc-devel \
 			make \
-			openssl-dev \
-			pcre-dev \
-			zlib-dev \
-			linux-headers \
-			libxslt-dev \
-			gd-dev \
-			geoip-dev \
-			perl-dev \
-			libedit-dev \
+			openssl-devel \
+			pcre-devel \
+			zlib-devel \
+			libxslt-devel \
+			perl-devel \
+			libedit-devel \
 			openjdk-11-jre-headless
 RUN mkdir -p /nginx/src \
 	&& curl -SL https://nginx.org/download/nginx-1.12.2.tar.gz \
