@@ -1,4 +1,4 @@
-FORM ubuntu:20.04
+FROM ubuntu:20.04
 
 LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com> Modified By jiang9217@foxmail.com"
 
