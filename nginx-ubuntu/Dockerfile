@@ -6,6 +6,7 @@ LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com> Modified By 
 
 RUN apt-get update
 RUN apt-get install -y gcc \
+			curl \
 			libpcre3 \
 			libpcre3-dev \
 			zlib1g-dev \
