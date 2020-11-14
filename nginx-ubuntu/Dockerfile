@@ -9,7 +9,7 @@ RUN apt-get install -y gcc \
 			libpcre3 \
 			libpcre3-dev \
 			zlib1g-dev \
-			openssl-devel \
+			openssl \
 			libssl-dev \
 			openjdk-11-jre-headless
 RUN mkdir -p /nginx/src \
