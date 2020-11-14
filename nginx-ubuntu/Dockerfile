@@ -19,7 +19,8 @@ RUN mkdir -p /nginx/src \
 	&& curl -O https://nginx.org/download/nginx-1.12.2.tar.gz \
 	&& tar -zxf nginx-1.12.2.tar.gz
 WORKDIR /nginx/src/nginx-1.12.2
-RUN sed -i '/cd.current_salt[0] = ~salt[0];/{s/\(.*\)/\/\*\1\*\//}' src/os/unix/ngx_user.c
+RUN sed -i '/cd.current_salt\[0\] = \~salt\[0\];/{s/^\(.*\)$/\/\*\1\*\//}' src/os/unix/ngx_user.c
+RUN cat src/os/unix/ngx_user.c
 RUN ./configure --with-pcre --with-http_ssl_module --with-stream \
 	&& make \
 	&& make install
