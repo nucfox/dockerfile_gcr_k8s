@@ -6,14 +6,11 @@ LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com> Modified By 
 
 RUN apt-get update
 RUN apt-get install -y gcc \
-			libc-devel \
-			make \
+			libpcre3 \
+			libpcre3-dev \
+			zlib1g-dev \
 			openssl-devel \
-			pcre-devel \
-			zlib-devel \
-			libxslt-devel \
-			perl-devel \
-			libedit-devel \
+			libssl-dev \
 			openjdk-11-jre-headless
 RUN mkdir -p /nginx/src \
 	&& curl -SL https://nginx.org/download/nginx-1.12.2.tar.gz \
