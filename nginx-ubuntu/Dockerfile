@@ -17,6 +17,7 @@ RUN mkdir -p /nginx/src \
 	&& curl -O https://nginx.org/download/nginx-1.12.2.tar.gz \
 	&& tar -zxf nginx-1.12.2.tar.gz
 WORKDIR /nginx/src/nginx-1.12.2
+RUN ls -l
 RUN ./configure --with-pcre --with-http_ssl_module --with-stream \
 	&& make \
 	&& make install
