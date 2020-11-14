@@ -14,11 +14,10 @@ RUN apt-get install -y gcc \
 			libssl-dev \
 			openjdk-11-jre-headless
 RUN mkdir -p /nginx/src \
+	&& cd /nginx/src
 	&& curl -O https://nginx.org/download/nginx-1.12.2.tar.gz \
 	&& tar -zxf nginx-1.12.2.tar.gz
-RUN ls -l
 WORKDIR /nginx/src/nginx-1.12.2
-RUN ls -l
 RUN ./configure --with-pcre --with-http_ssl_module --with-stream \
 	&& make \
 	&& make install
