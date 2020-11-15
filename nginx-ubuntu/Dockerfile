@@ -15,7 +15,7 @@ RUN set -x \
 			openssl \
 			libssl-dev \
 			openjdk-11-jre-headless \
-	&& rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists/* \
 	&& mkdir -p /tmp/nginx_src \
 	&& cd /nginx/src \
 	&& curl -O https://nginx.org/download/nginx-1.16.1.tar.gz \
