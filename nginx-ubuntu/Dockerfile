@@ -4,8 +4,9 @@ LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com> Modified By 
 
 # ENV http_proxy=http://proxy.it.taikang.com:8080
 
-RUN apt-get update
-RUN apt-get install -y gcc \
+RUN set -x \
+	&& apt-get update
+	&& apt-get install -y gcc \
 			make \
 			curl \
 			libpcre3 \
@@ -13,16 +14,20 @@ RUN apt-get install -y gcc \
 			zlib1g-dev \
 			openssl \
 			libssl-dev \
-			openjdk-11-jre-headless
-RUN mkdir -p /nginx/src \
+			openjdk-11-jre-headless \
+	&& rm -rf /var/lib/apt/lists/*
+	&& mkdir -p /tmp/nginx_src \
 	&& cd /nginx/src \
 	&& curl -O https://nginx.org/download/nginx-1.16.1.tar.gz \
-	&& tar -zxf nginx-1.16.1.tar.gz
-WORKDIR /nginx/src/nginx-1.16.1
+	&& tar -zxf nginx-1.16.1.tar.gz \
+	&& rm -f nginx-1.16.1.tar.gz \
+	&& cd /tmp/nginx_src/nginx-1.16.1 \
+	&& ./configure --with-pcre --with-http_ssl_module --with-stream \
+        && make \
+        && make install \
+	&& cd /tmp \
+	&& rm -rf nginx_src
+WORKDIR /usr/local/nginx
+RUN cat conf/nginx.conf
 #RUN sed -i '/cd.current_salt\[0\] = \~salt\[0\];/{s/^\(.*\)$/\/\*\1\*\//}' src/os/unix/ngx_user.c
-RUN cat src/os/unix/ngx_user.c
-RUN ./configure --with-pcre --with-http_ssl_module --with-stream \
-	&& make \
-	&& make install
-
 
