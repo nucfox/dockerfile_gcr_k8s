@@ -5,7 +5,7 @@ LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com> Modified By 
 # ENV http_proxy=http://proxy.it.taikang.com:8080
 
 RUN set -x \
-	&& apt-get update
+	&& apt-get update \
 	&& apt-get install -y gcc \
 			make \
 			curl \
