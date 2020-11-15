@@ -16,9 +16,9 @@ RUN apt-get install -y gcc \
 			openjdk-11-jre-headless
 RUN mkdir -p /nginx/src \
 	&& cd /nginx/src \
-	&& curl -O https://nginx.org/download/nginx-1.12.2.tar.gz \
-	&& tar -zxf nginx-1.12.2.tar.gz
-WORKDIR /nginx/src/nginx-1.12.2
+	&& curl -O https://nginx.org/download/nginx-1.16.1.tar.gz \
+	&& tar -zxf nginx-1.16.1.tar.gz
+WORKDIR /nginx/src/nginx-1.16.1
 RUN sed -i '/cd.current_salt\[0\] = \~salt\[0\];/{s/^\(.*\)$/\/\*\1\*\//}' src/os/unix/ngx_user.c
 RUN cat src/os/unix/ngx_user.c
 RUN ./configure --with-pcre --with-http_ssl_module --with-stream \
