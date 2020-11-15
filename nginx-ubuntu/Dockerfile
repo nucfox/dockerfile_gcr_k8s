@@ -17,7 +17,7 @@ RUN set -x \
 			openjdk-11-jre-headless \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& mkdir -p /tmp/nginx_src \
-	&& cd /nginx/src \
+	&& cd /tmp/nginx_src \
 	&& curl -O https://nginx.org/download/nginx-1.16.1.tar.gz \
 	&& tar -zxf nginx-1.16.1.tar.gz \
 	&& rm -f nginx-1.16.1.tar.gz \
