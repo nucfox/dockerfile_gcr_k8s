@@ -2,8 +2,6 @@ FROM ubuntu:20.04
 
 LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com> Modified By jiang9217@foxmail.com"
 
-# ENV http_proxy=http://proxy.it.taikang.com:8080
-
 RUN set -x \
 	&& apt-get update \
 	&& apt-get install -y gcc \
@@ -27,7 +25,7 @@ RUN set -x \
         && make install \
 	&& cd /tmp \
 	&& rm -rf nginx_src
+	&& ln -s /usr/local/nginx/sbin/nginx /bin/
 WORKDIR /usr/local/nginx
-RUN cat conf/nginx.conf
 #RUN sed -i '/cd.current_salt\[0\] = \~salt\[0\];/{s/^\(.*\)$/\/\*\1\*\//}' src/os/unix/ngx_user.c
 
