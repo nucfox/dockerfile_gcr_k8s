@@ -24,7 +24,7 @@ RUN set -x \
         && make \
         && make install \
 	&& cd /tmp \
-	&& rm -rf nginx_src
+	&& rm -rf nginx_src \
 	&& ln -s /usr/local/nginx/sbin/nginx /bin/
 WORKDIR /usr/local/nginx
 #RUN sed -i '/cd.current_salt\[0\] = \~salt\[0\];/{s/^\(.*\)$/\/\*\1\*\//}' src/os/unix/ngx_user.c
