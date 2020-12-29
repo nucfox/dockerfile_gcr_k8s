@@ -18,7 +18,7 @@ RUN set -x \
 	&& mkdir -p /tmp/openresty_src \
 	&& cd /tmp/openresty_src \
 	&& curl -O https://openresty.org/download/openresty-1.19.3.1.tar.gz \
-	&& curl -O https://codeload.github.com/vozlt/nginx-module-vts/tar.gz/v0.1.18 \
+	&& curl -o nginx-module-vts-0.1.18.tar.gz https://codeload.github.com/vozlt/nginx-module-vts/tar.gz/v0.1.18 \
 	&& tar zxf openresty-1.19.3.1.tar.gz \
 	&& tar zxf nginx-module-vts-0.1.18.tar.gz \
 	&& rm -f openresty-1.19.3.1.tar.gz \
