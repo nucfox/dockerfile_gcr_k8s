@@ -30,7 +30,7 @@ RUN set -x \
 	&& cd /tmp \
 	&& rm -rf openresty_src \
 	&& ln -s /usr/local/openresty/nginx/sbin/nginx /usr/bin/
-	&& cd /usr/local/openresty
+	&& cd /usr/local/openresty \
 	&& git clone https://github.com/knyar/nginx-lua-prometheus.git
 WORKDIR /usr/local/openresty
 COPY luacustom ./luacustom
