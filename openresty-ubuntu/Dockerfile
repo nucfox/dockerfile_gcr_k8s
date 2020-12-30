@@ -5,7 +5,7 @@ LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com> Modified By 
 RUN set -x \
 	&& apt-get update \
 	&& apt-get install -y gcc \
-	    git \
+	                git \
 			make \
 			curl \
 			libpcre3 \
@@ -13,7 +13,9 @@ RUN set -x \
 			zlib1g-dev \
 			openssl \
 			libssl-dev \
+			iproute2 \
 			openjdk-11-jre-headless \
+			
 	&& rm -rf /var/lib/apt/lists/* \
 	&& mkdir -p /tmp/openresty_src \
 	&& cd /tmp/openresty_src \
